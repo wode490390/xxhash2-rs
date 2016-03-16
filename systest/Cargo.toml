@@ -1,12 +1,12 @@
 [package]
-name = "xxhash-sys"
+name = "systest"
 version = "0.1.0"
 authors = ["Alex Crichton <alex@alexcrichton.com>"]
 build = "build.rs"
-links = "xxhash"
 
 [dependencies]
+xxhash-sys = { path = "../xxhash-sys" }
 libc = "0.2"
 
 [build-dependencies]
-cmake = "0.1"
+ctest = { git = "https://github.com/alexcrichton/ctest" }

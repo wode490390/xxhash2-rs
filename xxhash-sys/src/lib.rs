@@ -2,11 +2,11 @@
 
 extern crate libc;
 
-use libc::{c_void, size_t, c_uint, c_ulonglong, c_int, c_uchar, c_longlong};
+use libc::{c_void, size_t, c_uint, c_ulonglong, c_uchar, c_longlong};
 
 pub type XXH32_hash_t = c_uint;
 pub type XXH64_hash_t = c_ulonglong;
-pub type XXH_errorcode = c_int;
+pub type XXH_errorcode = c_uint;
 
 pub const XXH_OK: XXH_errorcode = 0;
 pub const XXH_ERROR: XXH_errorcode = 1;
