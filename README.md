@@ -12,7 +12,7 @@ Bindings to the official [libxxhash] implementation in Rust.
 ```toml
 # Cargo.toml
 [dependencies]
-xxhash2 = "0.2"
+xxhash2 = "0.1"
 ```
 
 # License
