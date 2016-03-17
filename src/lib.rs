@@ -197,6 +197,12 @@ impl Clone for State32 {
     }
 }
 
+impl Default for State32 {
+    fn default() -> State32 {
+        State32::new()
+    }
+}
+
 impl State64 {
     /// Creates a new blank instance of the 64-bit xxHash state.
     ///
@@ -289,6 +295,12 @@ impl Hasher for State64 {
 impl Clone for State64 {
     fn clone(&self) -> State64 {
         State64 { inner: self.inner }
+    }
+}
+
+impl Default for State64 {
+    fn default() -> State64 {
+        State64::new()
     }
 }
 
