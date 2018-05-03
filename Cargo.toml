@@ -7,7 +7,7 @@ readme = "README.md"
 keywords = ["hash"]
 repository = "https://github.com/alexcrichton/xxhash2-rs"
 homepage = "https://github.com/alexcrichton/xxhash2-rs"
-documentation = "http://alexcrichton.com/xxhash2-rs"
+documentation = "https://docs.rs/xxhash2-rs"
 description = """
 Bindings to libxxhash to provide the xxHash algorithm in Rust. Also contains an
 implementation of the std::hash traits so this can be used with the standard
