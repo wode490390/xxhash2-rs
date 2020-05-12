@@ -32,7 +32,7 @@ use std::fmt;
 use std::hash::Hasher;
 use std::mem;
 
-use libc::{size_t, c_void};
+use libc::{size_t, c_void, c_uint, c_ulonglong};
 
 /// Representation of the intermediate state of a 32-bit xxHash instance.
 ///
@@ -80,7 +80,7 @@ pub fn hash32(data: &[u8], seed: u32) -> u32 {
     unsafe {
         xxhash_sys::XXH32(data.as_ptr() as *const c_void,
                           data.len() as size_t,
-                          seed) as u32
+                          seed as c_uint) as u32
     }
 }
 
@@ -98,7 +98,7 @@ pub fn hash64(data: &[u8], seed: u64) -> u64 {
     unsafe {
         xxhash_sys::XXH64(data.as_ptr() as *const c_void,
                           data.len() as size_t,
-                          seed) as u64
+                          seed as c_ulonglong) as u64
     }
 }
 
@@ -153,7 +153,7 @@ impl State32 {
     /// ```
     pub fn reset(&mut self, seed: u32) {
         let r = unsafe {
-            xxhash_sys::XXH32_reset(self.inner(), seed)
+            xxhash_sys::XXH32_reset(self.inner(), seed as c_uint)
         };
         assert_eq!(r, xxhash_sys::XXH_OK);
     }
@@ -254,7 +254,7 @@ impl State64 {
     /// ```
     pub fn reset(&mut self, seed: u64) {
         let r = unsafe {
-            xxhash_sys::XXH64_reset(self.inner(), seed)
+            xxhash_sys::XXH64_reset(self.inner(), seed as c_ulonglong)
         };
         assert_eq!(r, xxhash_sys::XXH_OK);
     }

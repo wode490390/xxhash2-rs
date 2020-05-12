@@ -46,11 +46,11 @@ extern {
     #[link_name = "__rust_xxhash_sys_XXH32"]
     pub fn XXH32(input: *const c_void,
                  length: size_t,
-                 seed: c_uint) -> XXH32_hash_t;
+                 seed: XXH32_hash_t) -> XXH32_hash_t;
     #[link_name = "__rust_xxhash_sys_XXH64"]
     pub fn XXH64(input: *const c_void,
                  length: size_t,
-                 seed: c_ulonglong) -> XXH64_hash_t;
+                 seed: XXH64_hash_t) -> XXH64_hash_t;
 
     #[link_name = "__rust_xxhash_sys_XXH32_createState"]
     pub fn XXH32_createState() -> *mut XXH32_state_t;
@@ -63,7 +63,7 @@ extern {
 
     #[link_name = "__rust_xxhash_sys_XXH32_reset"]
     pub fn XXH32_reset(statePtr: *mut XXH32_state_t,
-                       seed: c_uint) -> XXH_errorcode;
+                       seed: XXH32_hash_t) -> XXH_errorcode;
     #[link_name = "__rust_xxhash_sys_XXH32_update"]
     pub fn XXH32_update(statePtr: *mut XXH32_state_t,
                         input: *const c_void,
@@ -73,7 +73,7 @@ extern {
 
     #[link_name = "__rust_xxhash_sys_XXH64_reset"]
     pub fn XXH64_reset(statePtr: *mut XXH64_state_t,
-                       seed: c_ulonglong) -> XXH_errorcode;
+                       seed: XXH64_hash_t) -> XXH_errorcode;
     #[link_name = "__rust_xxhash_sys_XXH64_update"]
     pub fn XXH64_update(statePtr: *mut XXH64_state_t,
                         input: *const c_void,
@@ -81,15 +81,17 @@ extern {
     #[link_name = "__rust_xxhash_sys_XXH64_digest"]
     pub fn XXH64_digest(statePtr: *const XXH64_state_t) -> XXH64_hash_t;
 
-    // apis that aren't namespaced?!
-
+    #[link_name = "__rust_xxhash_sys_XXH32_canonicalFromHash"]
     pub fn XXH32_canonicalFromHash(dst: *mut XXH32_canonical_t,
                                    hash: XXH32_hash_t);
+    #[link_name = "__rust_xxhash_sys_XXH64_canonicalFromHash"]
     pub fn XXH64_canonicalFromHash(dst: *mut XXH64_canonical_t,
                                    hash: XXH64_hash_t);
 
+    #[link_name = "__rust_xxhash_sys_XXH32_hashFromCanonical"]
     pub fn XXH32_hashFromCanonical(src: *const XXH32_canonical_t)
                                    -> XXH32_hash_t;
+    #[link_name = "__rust_xxhash_sys_XXH64_hashFromCanonical"]
     pub fn XXH64_hashFromCanonical(src: *const XXH64_canonical_t)
                                    -> XXH64_hash_t;
 }
